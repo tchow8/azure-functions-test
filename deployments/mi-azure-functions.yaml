@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-azure-functions
+  namespace: mi
+spec:
+  selector:
+    matchLabels:
+      app: mi-azure-functions
+  template:
+    metadata:
+      labels:
+        app: mi-azure-functions
+    spec:
+      containers:
+        - name: mi-azure-functions
+          image: ynotbuild/notifyfunction-1606876065908
+          ports:
+            - containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-azure-functions-http
+  namespace: mi
+spec:
+  selector:
+    app: mi-azure-functions
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer
