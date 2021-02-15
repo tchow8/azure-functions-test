@@ -1,0 +1,35 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "npm install",
+      "command": "npm install"
+    },
+    {
+      "type": "shell",
+      "label": "npm prune",
+      "command": "npm prune --production",
+      "problemMatcher": []
+    },
+    {
+      "type": "func",
+      "command": "host start",
+      "problemMatcher": "$func-java-watch",
+      "isBackground": true,
+      "options": {
+        "cwd": "${workspaceFolder}/target/azure-functions/NotifyFunction-1606876065908"
+      },
+      "dependsOn": "package"
+    },
+    {
+      "label": "package",
+      "command": "mvn clean package",
+      "type": "shell",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
+}

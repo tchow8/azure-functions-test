@@ -1,0 +1,8 @@
+{
+  "azureFunctions.deploySubpath": "target/azure-functions/NotifyFunction-1606876065908",
+  "azureFunctions.postDeployTask": "npm install",
+  "azureFunctions.projectLanguage": "Java",
+  "azureFunctions.projectRuntime": "~3",
+  "debug.internalConsoleOptions": "neverOpen",
+  "azureFunctions.preDeployTask": "package"
+}
