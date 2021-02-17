@@ -31,3 +31,22 @@ spec:
       port: 80
       targetPort: 80
   type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mi-azure-functions-ingress
+  namespace: mi
+  annotations:
+    kubernetes.io/ingress.class: traefik
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: mi-azure-functions-http
+            port:
+              number: 80
